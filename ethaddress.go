@@ -1,9 +1,9 @@
 package main
 
 import (
+	"encoding/hex"
 	"fmt"
 
-	"github.com/ethereum/go-ethereum/common/hexutil"
 	"golang.org/x/crypto/sha3"
 )
 
@@ -16,5 +16,5 @@ func main() {
 
 	hash := sha3.NewLegacyKeccak256()
 	hash.Write(pubKeyByte[1:])
-	fmt.Println("address: ", hexutil.Encode(hash.Sum(nil)[12:])) // 0x96216849c49358b10257cb55b28ea603c874b05e
+	fmt.Printf("address: 0x%s\n", hex.EncodeToString(hash.Sum(nil)[12:]))
 }
